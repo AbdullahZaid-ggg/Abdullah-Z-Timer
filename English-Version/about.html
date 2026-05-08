@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - Abdullah Z Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-clock"></i> Timer</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-title">
+                <span class="title-icon">ℹ️</span>
+                <div>
+                    <h1>About</h1>
+                    <p>About the Abdullah Z Timer project</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-rocket"></i> About the Project</h2>
+                <p>Abdullah Z Timer is a modern Pomodoro app combining aesthetic design with practical functionality. Designed to help you achieve maximum productivity while maintaining your physical and mental health.</p>
+                <p>The design features a modern glass-morphism interface with gradient colors combining cyan and purple, providing a comfortable and impressive user experience.</p>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-lightbulb"></i> Pomodoro Technique</h2>
+                <p>The Pomodoro Technique is a time management method developed by Francesco Cirillo in the late 1980s. The concept is simple: focused bursts of work (typically 25 minutes) followed by short breaks (5 minutes).</p>
+                <p>This method helps you:</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> Increase focus and reduce distractions</li>
+                    <li><i class="fas fa-check"></i> Improve time management</li>
+                    <li><i class="fas fa-check"></i> Reduce mental fatigue</li>
+                    <li><i class="fas fa-check"></i> Boost productivity</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-code"></i> Technologies Used</h2>
+                <p>This website was built using:</p>
+                <ul class="features-list">
+                    <li><i class="fab fa-html5"></i> HTML5 - For page structure</li>
+                    <li><i class="fab fa-css3"></i> CSS3 - For design and glass effects</li>
+                    <li><i class="fab fa-js"></i> JavaScript - For logic and interaction</li>
+                    <li><i class="fab fa-font-awesome"></i> Font Awesome - For icons</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-heart"></i> The Developer</h2>
+                <p>This project was developed with volunteer work and passion by <strong>Abdullah Zaid</strong>.</p>
+                <p>This project is an example of passion for learning and building useful tools for the community.</p>
+            </div>
+
+            <footer>
+                <p>Made with love by <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

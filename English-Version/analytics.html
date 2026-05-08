@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analytics - Abdullah Z Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-clock"></i> Timer</a></li>
+                <li><a href="analytics.html" class="active"><i class="fas fa-chart-line"></i> Analytics</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> About</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> Contact</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-title">
+                <span class="title-icon">📊</span>
+                <div>
+                    <h1>Analytics</h1>
+                    <p>Track your progress and achieve your goals</p>
+                </div>
+            </div>
+
+            <div class="analytics-layout">
+                <div class="stats-column">
+                    <div class="stats-grid">
+                        <button class="stat-card" id="stat-work">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Work Sessions</div>
+                        </button>
+                        <button class="stat-card" id="stat-break">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Break Sessions</div>
+                        </button>
+                        <button class="stat-card" id="stat-hours">
+                            <div class="stat-number">0m</div>
+                            <div class="stat-label">Focus Minutes</div>
+                        </button>
+                        <button class="stat-card" id="stat-streak">
+                            <div class="stat-number">0</div>
+                            <div class="stat-label">Day Streak</div>
+                        </button>
+                    </div>
+                    <div class="analytics-chart" style="margin-top: 20px;">
+                        <h3><i class="fas fa-chart-bar"></i> Weekly Overview</h3>
+                        <div id="weekly-chart-content" class="chart-placeholder">
+                            <i class="fas fa-chart-bar" style="font-size: 2.5rem; margin-bottom: 10px;"></i>
+                            <p>Complete focus sessions</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-column">
+                    <div class="analytics-chart">
+                        <h3><i class="fas fa-chart-line"></i> Productivity Rate</h3>
+                        <div id="line-chart-content" class="chart-placeholder">
+                            <canvas id="lineChart"></canvas>
+                        </div>
+                    </div>
+                    <div class="analytics-chart">
+                        <h3><i class="fas fa-chart-pie"></i> Session Ratio</h3>
+                        <div id="pie-chart-content" class="pie-chart-container">
+                            <canvas id="pieChart"></canvas>
+                            <div class="pie-legend">
+                                <div class="legend-item"><span class="legend-color" style="background: var(--primary);"></span> Focus</div>
+                                <div class="legend-item"><span class="legend-color" style="background: var(--break);"></span> Break</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sessions-column">
+                    <section class="history-section">
+                        <div class="history-header">
+                            <h3>Session History</h3>
+                            <button id="clear-history">Clear</button>
+                        </div>
+                        <ul id="session-list"></ul>
+                    </section>
+                </div>
+            </div>
+
+            <footer>
+                <p>Made with love by <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+
+        function loadStats() {
+            const sessions = JSON.parse(localStorage.getItem('pomodoroSessionsEn')) || [];
+            const workSessions = sessions.filter(s => s.type === 'focus').length;
+            const breakSessions = sessions.filter(s => s.type === 'break').length;
+            const totalSeconds = sessions.reduce((acc, s) => acc + (s.duration || 0), 0);
+            const totalMinutes = Math.floor(totalSeconds / 60);
+            const streakDays = calculateStreak(sessions);
+
+            document.getElementById('stat-work').querySelector('.stat-number').textContent = workSessions;
+            document.getElementById('stat-break').querySelector('.stat-number').textContent = breakSessions;
+            document.getElementById('stat-hours').querySelector('.stat-number').textContent = totalMinutes + 'm';
+            document.getElementById('stat-streak').querySelector('.stat-number').textContent = streakDays;
+
+            updateWeeklyChart(sessions);
+            updateLineChart(sessions);
+            updatePieChart(workSessions, breakSessions);
+            loadSessionHistory();
+        }
+
+        function calculateStreak(sessions) {
+            if (sessions.length === 0) return 0;
+            const dates = [...new Set(sessions.map(s => new Date(s.date).toDateString()))].sort().reverse();
+            let streak = 0;
+            for (let i = 0; i < dates.length; i++) {
+                const expectedDate = new Date();
+                expectedDate.setDate(expectedDate.getDate() - i);
+                if (dates[i] === expectedDate.toDateString()) {
+                    streak++;
+                } else {
+                    break;
+                }
+            }
+            return streak;
+        }
+
+        function updateWeeklyChart(sessions) {
+            const chartContainer = document.getElementById('weekly-chart-content');
+            if (!chartContainer) return;
+
+            const last7Days = [];
+            for (let i = 6; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                const dayName = date.toLocaleDateString('en', { weekday: 'short' });
+                const dayStr = date.toDateString();
+                const count = sessions.filter(s => new Date(s.date).toDateString() === dayStr && s.type === 'focus').length;
+                last7Days.push({ day: dayName, count: count });
+            }
+
+            const hasData = last7Days.some(d => d.count > 0);
+            if (hasData) {
+                let barsHTML = '<div class="week-bars">';
+                last7Days.forEach(d => {
+                    const height = Math.max(20, d.count * 30);
+                    barsHTML += `
+                        <div class="bar-container">
+                            <div class="bar" style="height: ${height}px"></div>
+                            <span class="bar-label">${d.day}</span>
+                            <span class="bar-count">${d.count}</span>
+                        </div>
+                    `;
+                });
+                barsHTML += '</div>';
+                chartContainer.innerHTML = barsHTML;
+            }
+        }
+
+        let lineChartInstance = null;
+        function updateLineChart(sessions) {
+            const canvas = document.getElementById('lineChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+            
+            const last14Days = [];
+            for (let i = 13; i >= 0; i--) {
+                const date = new Date();
+                date.setDate(date.getDate() - i);
+                const dayName = date.toLocaleDateString('en', { weekday: 'short' });
+                const dayStr = date.toDateString();
+                const workCount = sessions.filter(s => new Date(s.date).toDateString() === dayStr && s.type === 'focus').length;
+                last14Days.push({ day: dayName, count: workCount });
+            }
+
+            if (lineChartInstance) {
+                lineChartInstance.destroy();
+            }
+
+            if (last14Days.some(d => d.count > 0)) {
+                lineChartInstance = new Chart(ctx, {
+                    type: 'line',
+                    data: {
+                        labels: last14Days.map(d => d.day),
+                        datasets: [{
+                            label: 'Focus Sessions',
+                            data: last14Days.map(d => d.count),
+                            borderColor: '#00f2ff',
+                            backgroundColor: 'rgba(0, 242, 255, 0.1)',
+                            fill: true,
+                            tension: 0.4,
+                            pointBackgroundColor: '#00f2ff',
+                            pointBorderColor: '#fff',
+                            pointRadius: 4
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        scales: {
+                            y: {
+                                beginAtZero: true,
+                                ticks: { color: 'rgba(255,255,255,0.6)' },
+                                grid: { color: 'rgba(255,255,255,0.1)' }
+                            },
+                            x: {
+                                ticks: { color: 'rgba(255,255,255,0.6)' },
+                                grid: { display: false }
+                            }
+                        }
+                    }
+                });
+            } else {
+                canvas.style.display = 'none';
+            }
+        }
+
+        let pieChartInstance = null;
+        function updatePieChart(workSessions, breakSessions) {
+            const canvas = document.getElementById('pieChart');
+            if (!canvas) return;
+
+            const ctx = canvas.getContext('2d');
+
+            if (pieChartInstance) {
+                pieChartInstance.destroy();
+            }
+
+            if (workSessions > 0 || breakSessions > 0) {
+                pieChartInstance = new Chart(ctx, {
+                    type: 'doughnut',
+                    data: {
+                        labels: ['Focus', 'Break'],
+                        datasets: [{
+                            data: [workSessions, breakSessions],
+                            backgroundColor: ['#00f2ff', '#00ff88'],
+                            borderColor: 'rgba(255,255,255,0.1)',
+                            borderWidth: 2
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false }
+                        },
+                        cutout: '60%'
+                    }
+                });
+            } else {
+                canvas.style.display = 'none';
+            }
+        }
+
+        function loadSessionHistory() {
+            const sessions = JSON.parse(localStorage.getItem('pomodoroSessionsEn')) || [];
+            const list = document.getElementById('session-list');
+            list.innerHTML = '';
+
+            if (sessions.length === 0) {
+                list.innerHTML = '<li style="text-align: center; color: rgba(255,255,255,0.4); padding: 20px;">No sessions recorded</li>';
+                return;
+            }
+
+            const reversed = [...sessions].reverse();
+            reversed.forEach((session, index) => {
+                const mins = Math.floor((session.duration || 0) / 60);
+                const secs = (session.duration || 0) % 60;
+                const durationText = `${mins}:${secs.toString().padStart(2, '0')}`;
+                const date = new Date(session.date).toLocaleDateString('en', { month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' });
+                const isWork = session.type === 'focus';
+
+                const li = document.createElement('li');
+                li.className = `session-item ${isWork ? 'work' : 'break'}`;
+                li.innerHTML = `
+                    <div>
+                        <span>${session.type} session (${durationText})</span>
+                        <span class="session-date">${date}</span>
+                    </div>
+                    <i class="fas fa-trash delete-btn" data-index="${sessions.length - 1 - index}"></i>
+                `;
+                li.querySelector('.delete-btn').addEventListener('click', function() {
+                    deleteSession(parseInt(this.dataset.index));
+                });
+                list.appendChild(li);
+            });
+        }
+
+        function deleteSession(index) {
+            let sessions = JSON.parse(localStorage.getItem('pomodoroSessionsEn')) || [];
+            sessions.splice(index, 1);
+            localStorage.setItem('pomodoroSessionsEn', JSON.stringify(sessions));
+            loadStats();
+        }
+
+        document.getElementById('clear-history')?.addEventListener('click', function() {
+            if (confirm('Are you sure you want to clear all history?')) {
+                localStorage.removeItem('pomodoroSessionsEn');
+                loadStats();
+            }
+        });
+
+        loadStats();
+    </script>
+</body>
+
+</html>
