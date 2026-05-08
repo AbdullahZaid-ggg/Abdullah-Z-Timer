@@ -43,8 +43,8 @@ function syncFromInput() {
     totalSeconds = (hrs * 3600) + (mins * 60) + secs;
     
     const workMinutes = (hrs * 60) + mins;
-    const bMins = Math.floor(workMinutes / 5) || 1;
-    breakHint.innerText = `الاستراحة: ${bMins} دقائق (تلقائي)`;
+    const bMins = 5;
+    breakHint.innerText = `الاستراحة: ${bMins} دقائق`;
     
     updateUI();
 }
@@ -61,18 +61,19 @@ export function start() {
             clearInterval(timerInterval);
             timerInterval = null;
             
+const finishedSession = isWorkSession ? "تركيز" : "استراحة";
             isWorkSession = !isWorkSession;
             const hrs = parseInt(hoursInput.value) || 0;
             const mins = parseInt(minutesInput.value) || 0;
             const baseMinutes = (hrs * 60) + mins;
             const baseSeconds = (hrs * 3600) + (mins * 60);
-            totalSeconds = isWorkSession ? baseSeconds : Math.floor(baseMinutes / 5) * 60;
-            
+            totalSeconds = isWorkSession ? baseSeconds : 5 * 60;
+
             statusLabel.innerText = isWorkSession ? "وضع التركيز" : "وضع الاستراحة";
             statusLabel.style.color = isWorkSession ? "#00f2ff" : "#00ff88";
             
-            addSessionToLog(isWorkSession ? "استراحة" : "تركيز");
-            alert("انتهت الجلسة!");
+            addSessionToLog(finishedSession);
+            showPopup(finishedSession);
             updateUI();
             return;
         }
@@ -113,3 +114,24 @@ function addSessionToLog(type) {
 
 // تحديث أولي عند التشغيل
 updateUI();
+
+// Popup functionality
+const popup = document.getElementById("popup");
+const popupTitle = document.getElementById("popup-title");
+const popupMessage = document.getElementById("popup-message");
+const popupBtn = document.getElementById("popup-btn");
+
+function showPopup(type) {
+    if (type === "تركيز") {
+        popupTitle.innerText = "انتهت الجلسة!";
+        popupMessage.innerText = "حان وقت الاستراحة";
+    } else {
+        popupTitle.innerText = "انتهت الاستراحة!";
+        popupMessage.innerText = "حان وقت التركيز";
+    }
+    popup.classList.add("show");
+}
+
+popupBtn.addEventListener("click", () => {
+    popup.classList.remove("show");
+});

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Z-Timer Pro</title>
+    <title>Abdullah Z Timer</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -14,18 +14,18 @@
     <div class="container">
         <div class="glass-card">
             <header>
-                <h1> Abdullah Z Timer</h1>
+                <h1>Abdullah Z Timer</h1>
                 <p class="tagline">Work Hard, Rest Smart</p>
             </header>
 
             <div class="settings-panel">
                 <label>وقت التركيز</label>
                 <div class="input-group">
-                    <input type="number" id="hours-input" value="0" min="0" max="24" placeholder="س">
+                    <input type="number" id="seconds-input" value="0" min="0" max="59" placeholder="ث">
                     <span class="input-sep">:</span>
                     <input type="number" id="minutes-input" value="25" min="0" max="59" placeholder="د">
                     <span class="input-sep">:</span>
-                    <input type="number" id="seconds-input" value="0" min="0" max="59" placeholder="ث">
+                    <input type="number" id="hours-input" value="0" min="0" max="24" placeholder="س">
                 </div>
                 <small id="break-hint">الاستراحة: 5 دقائق</small>
             </div>
@@ -55,10 +55,19 @@
             <footer>
                 <p>تم صنع هذا الموقع بتطوع وشغف من <i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></p>
             </footer>
+</div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon"><i class="fas fa-bell"></i></div>
+            <h2 id="popup-title">انتهت الجلسة!</h2>
+            <p id="popup-message">حان وقت الاستراحة</p>
+            <button id="popup-btn">موافق</button>
         </div>
     </div>
 
-<script type="module" src="components/script.js"></script>
+    <script type="module" src="components/script.js"></script>
 </body>
 
 </html>
