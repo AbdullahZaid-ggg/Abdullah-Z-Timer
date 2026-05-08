@@ -4,21 +4,33 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdullah Z Timer</title>
+    <title>Abdullah Z Timer - المؤقت</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-clock"></i> المؤقت</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> الإحصائيات</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="glass-card">
-            <header>
-                <div class="tomato-icon">🍅</div>
-                <h1>Abdullah Z Timer</h1>
-                <p class="tagline">Work Hard, Rest Smart</p>
-            </header>
-
             <div class="settings-panel">
                 <label>وقت التركيز</label>
                 <div class="input-group">
@@ -45,18 +57,10 @@
                 <button id="reset" class="btn-reset"><i class="fas fa-undo"></i> إعادة</button>
             </div>
 
-            <section class="history-section">
-                <div class="history-header">
-                    <h3>السجل</h3>
-                    <button id="clear-history">مسح</button>
-                </div>
-                <ul id="session-list"></ul>
-            </section>
-
             <footer>
-                <p>تم صنع هذا الموقع بتطوع وشغف من <i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></p>
+                <p>تم صنع هذا الموقع بتطوع وشغف من <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
             </footer>
-</div>
+        </div>
     </div>
 
     <div id="popup" class="popup">
@@ -69,6 +73,11 @@
     </div>
 
     <script type="module" src="components/script.js"></script>
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
 </body>
 
 </html>

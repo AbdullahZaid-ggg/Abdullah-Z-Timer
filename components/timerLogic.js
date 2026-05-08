@@ -53,26 +53,39 @@ hoursInput.addEventListener('input', syncFromInput);
 minutesInput.addEventListener('input', syncFromInput);
 secondsInput.addEventListener('input', syncFromInput);
 
+let originalDuration = 25 * 60;
+
 export function start() {
     if (timerInterval) return;
+
+    if (!sessionStartTime) {
+        sessionStartTime = Date.now();
+        pausedTime = 0;
+        originalDuration = isWorkSession ? 
+            ((parseInt(hoursInput.value) || 0) * 3600 + (parseInt(minutesInput.value) || 0) * 60) :
+            5 * 60;
+    }
 
     timerInterval = setInterval(() => {
         if (totalSeconds <= 0) {
             clearInterval(timerInterval);
             timerInterval = null;
             
-const finishedSession = isWorkSession ? "تركيز" : "استراحة";
+            const finishedSession = isWorkSession ? "تركيز" : "استراحة";
+            const actualDuration = originalDuration;
+            
             isWorkSession = !isWorkSession;
             const hrs = parseInt(hoursInput.value) || 0;
             const mins = parseInt(minutesInput.value) || 0;
-            const baseMinutes = (hrs * 60) + mins;
             const baseSeconds = (hrs * 3600) + (mins * 60);
             totalSeconds = isWorkSession ? baseSeconds : 5 * 60;
 
             statusLabel.innerText = isWorkSession ? "وضع التركيز" : "وضع الاستراحة";
             statusLabel.style.color = isWorkSession ? "#00f2ff" : "#00ff88";
             
-            addSessionToLog(finishedSession);
+            addSessionToLog(finishedSession, actualDuration);
+            sessionStartTime = null;
+            pausedTime = 0;
             showPopup(finishedSession);
             updateUI();
             return;
@@ -83,6 +96,10 @@ const finishedSession = isWorkSession ? "تركيز" : "استراحة";
 }
 
 export function pause() {
+    if (sessionStartTime) {
+        const elapsed = Math.floor((Date.now() - sessionStartTime) / 1000);
+        pausedTime += elapsed;
+    }
     clearInterval(timerInterval);
     timerInterval = null;
 }
@@ -90,6 +107,8 @@ export function pause() {
 export function reset() {
     pause();
     isWorkSession = true;
+    sessionStartTime = null;
+    pausedTime = 0;
     syncFromInput();
     statusLabel.innerText = "وضع التركيز";
     statusLabel.style.color = "#00f2ff";
@@ -99,17 +118,55 @@ export function clearHistory() {
     document.getElementById("session-list").innerHTML = "";
 }
 
-function addSessionToLog(type) {
-    const list = document.getElementById("session-list");
-    const li = document.createElement("li");
-    li.className = "session-item";
-    li.innerHTML = `
-        <span>جلسة ${type} مكتملة</span>
-        <i class="fas fa-check-circle"></i>
-        <i class="fas fa-trash delete-btn"></i>
-    `;
-    li.querySelector(".delete-btn").addEventListener("click", () => li.remove());
-    list.prepend(li);
+function addSessionToLog(type, actualDuration) {
+    saveSessionToStorage(type, actualDuration);
+}
+
+let sessionStartTime = null;
+let pausedTime = 0;
+
+function saveSessionToStorage(type, actualDuration) {
+    let sessions = JSON.parse(localStorage.getItem('pomodoroSessions')) || [];
+    const sessionData = {
+        type: type,
+        date: new Date().toISOString(),
+        timestamp: Date.now(),
+        duration: actualDuration
+    };
+    sessions.push(sessionData);
+    localStorage.setItem('pomodoroSessions', JSON.stringify(sessions));
+}
+
+export function getStats() {
+    const sessions = JSON.parse(localStorage.getItem('pomodoroSessions')) || [];
+    const workSessions = sessions.filter(s => s.type === 'تركيز').length;
+    const breakSessions = sessions.filter(s => s.type === 'استراحة').length;
+    const totalSeconds = sessions.reduce((acc, s) => acc + (s.duration || 0), 0);
+    const totalHours = (totalSeconds / 3600).toFixed(1);
+    
+    const today = new Date().toDateString();
+    const streakDays = calculateStreak(sessions);
+    
+    return { workSessions, breakSessions, totalHours, streakDays };
+}
+
+function calculateStreak(sessions) {
+    if (sessions.length === 0) return 0;
+    
+    const dates = [...new Set(sessions.map(s => new Date(s.date).toDateString()))].sort().reverse();
+    let streak = 0;
+    const today = new Date().toDateString();
+    
+    for (let i = 0; i < dates.length; i++) {
+        const expectedDate = new Date();
+        expectedDate.setDate(expectedDate.getDate() - i);
+        if (dates[i] === expectedDate.toDateString()) {
+            streak++;
+        } else {
+            break;
+        }
+    }
+    return streak;
 }
 
 // تحديث أولي عند التشغيل
