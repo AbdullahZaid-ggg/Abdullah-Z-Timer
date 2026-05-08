@@ -12,6 +12,9 @@
 
 <body>
 
+    <!-- ============================================
+         قسم التنقل (Navigation Bar)
+         ============================================ -->
     <nav class="main-nav">
         <div class="nav-container">
             <a href="index.html" class="nav-logo">
@@ -30,8 +33,12 @@
         </div>
     </nav>
 
+    <!-- ============================================
+         محتوى صفحة الإحصائيات
+         ============================================ -->
     <div class="page-wrapper">
         <div class="page-content">
+            <!-- عنوان الصفحة -->
             <div class="page-title">
                 <span class="title-icon">📊</span>
                 <div>
@@ -105,7 +112,11 @@
         </div>
     </div>
 
+    <!-- ============================================
+         JavaScript - معالجة الإحصائيات والرسوم البيانية
+         ============================================ -->
     <script>
+        /* التحكم في القائمة للموبايل */
         document.getElementById('nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('show');
         });

@@ -1,161 +1,110 @@
-# 🍅 Abdullah Z Timer - Pomodoro Application
+# 🍅 Abdullah Z Timer - مؤقت بومودورو
 
-A modern Pomodoro timer built with pure HTML, CSS, and JavaScript featuring a stunning dark glass-morphism design with Arabic RTL support.
+## عربية (Arabic)
 
-> **Note**: This is a pure vanilla project with no external frameworks - just HTML, CSS, and JavaScript!
-
----
-
-## ✨ Features
-
-| Feature | Description |
-|---------|-------------|
-| ⏱️ **Timer** | Hours, minutes, and seconds inputs (left to right), supports up to 24 hours |
-| 🎮 **Controls** | Start, Pause, and Reset buttons with smooth hover animations |
-| 🔄 **Auto-Switch** | Automatically switches between work sessions (25 min default) and breaks (5 min fixed) |
-| 📋 **History** | Session log with individual delete buttons for each entry |
-|popup **Modal** | Custom popup notification when session ends (not browser alert) |
-| 🎨 **Design** | Dark glass-morphism theme with cyan/purple gradient |
-| 🌐 **RTL** | Full Arabic RTL language support |
-| 📱 **Responsive** | Mobile-friendly with responsive breakpoints |
-| 🔗 **Footer** | GitHub credit with icon link |
-| 🍅 **Header** | Tomato icon in the header |
+مؤقت بومودورو عصري مبني بـ HTML و CSS و JavaScript بتصميم زجاجي داكن مع دعم اللغة العربية.
 
 ---
 
-## 🚀 Quick Start
+## עברית (Hebrew)
 
-### Installation
+טיימר פומודורו מודרני בנוי עם HTML, CSS ו-JavaScript עם עיצוב זכוכית כהה ותמיכה בעברית.
+
+---
+
+## English
+
+A modern Pomodoro timer built with HTML, CSS, and JavaScript featuring a stunning dark glass-morphism design with Arabic RTL support.
+
+---
+
+## ✨ المزايا | התכונות | Features
+
+| عربية                                        | עברית                                      | English                                 |
+| -------------------------------------------- | ------------------------------------------ | --------------------------------------- |
+| مؤقت بالساعات والدقائق والثواني              | טיימר עם שעות, דקות ושניות                 | Timer with hours, minutes, seconds      |
+| أزرار البدء والإيقاف وإعادة الضبط            | כפתורי התחלה, עצירה ואיפוס                 | Start, Pause, Reset buttons             |
+| تبديل تلقائي بين العمل (25د) والاستراحة (5د) | מעבר אוטומטי בין עבודה (25דק) להפסקה (5דק) | Auto-switch work (25min) & break (5min) |
+| سجل الجلسات مع زر الحذف                      | יומן הפעלות עם כפתור מחיקה                 | Session history with delete button      |
+| نافذة منبثقة عند انتهاء الجلسة               | חלון קופץ בסיום ההפעלה                     | Custom popup when session ends          |
+| تصميم زجاجي داكن بألوان سيان وبنفسجي         | עיצוב זכוכית כהה בצבעי ציאן וסגול          | Dark glass-morphism cyan/purple theme   |
+| دعم اللغة العربية RTL                        | תמיכה בעברית RTL                           | Arabic RTL support                      |
+| متجاوب للموبايل                              | רספונסיבי לנייד                            | Mobile responsive                       |
+| ذيل مع رابط GitHub                           | פודר עם קישור ל-GitHub                     | Footer with GitHub link                 |
+| 🍅 أيقونة طماطم في العنوان                   | אייקון עגבנייה בכותרת                      | Tomato icon in header                   |
+
+---
+
+## 🚀 البدء السريع | התחלה מהירה | Quick Start
 
 ```bash
-# Clone the repository
 git clone https://github.com/AbdullahZaid-ggg/Abdullah-Z-Timer.git
-
-# Open the project
 cd Abdullah-Z-Timer
-# Open index.html in your browser
+# افتح index.html في المتصفح
+# פתח את index.html בדפדפן
+# Open index.html in browser
 ```
 
-### Alternative
-Simply open `index.html` file in any modern web browser.
+---
+
+## 📖 الاستخدام | השימוש | Usage
+
+### ضبط المؤقت | הגדרת הטיימר | Setting the Timer
+
+- استخدم حقول الإدخال لضبط الساعات والدقائق والثواني | השתמש בשדות הקלט להגדיר שעות, דקות ושניות | Use input fields to set hours, minutes, seconds
+- الحد الأقصى 24 ساعة | מקסימום 24 שעות | Maximum 24 hours
+- الافتراضي 25 دقيقة | ברירת מחדל 25 דקות | Default 25 minutes
+
+### تشغيل المؤقت | הפעלת הטיימר | Running the Timer
+
+- **ابدأ** - بدء العد التنازلي | התחל - התחלת הספירה לאחור | Start - Begin countdown
+- **إيقاف** - إيقاف مؤقت | עצירה - עצירה זמנית | Pause - Temporarily stop
+- **إعادة** - إعادة ضبط | איפוס - איפוס הטיימר | Reset - Reset timer
+
+### تدفق الجلسات | זרימת הפעלות | Session Flow
+
+- **جلسة العمل**: 25 دقيقة (قابلة للتعديل) | 25 דקות (ניתן לשנות) | 25 minutes (configurable)
+- **جلسة الاستراحة**: 5 دقائق ثابتة | 5 דקות קבועות | 5 minutes fixed
+- المؤقت يبدل تلقائياً بين العمل والاستراحة | הטיימר עובר אוטומטית בין עבודה להפסקה | Timer auto-switches work/break
 
 ---
 
-## 📖 Usage Guide
-
-### Setting the Timer
-1. Use the input fields to set hours, minutes, and seconds
-2. Maximum allowed time is 24 hours
-3. Default work session is 25 minutes
-
-### Running the Timer
-1. Click **ابدأ** (Start) to begin the countdown
-2. Click **إيقاف** (Pause) to pause at any time
-3. Click **إعادة** (Reset) to reset to the original time
-
-### Session Flow
-- **Work Session**: Default 25 minutes (configurable)
-- **Break Session**: Fixed 5 minutes
-- Timer automatically switches between work and break
-- Popup modal appears when each session ends
-- Completed sessions are logged in the history
-
-### History Management
-- View all completed sessions in the history section
-- Delete individual sessions using the trash icon
-- Clear all history with the "مسح" button
-
----
-
-## 🎨 Design System
-
-### Color Palette
-
-| Color | Hex Code | Usage |
-|-------|----------|-------|
-| Primary Cyan | `#00f2ff` | Buttons, accents, gradients |
-| Accent Purple | `#7000ff` | Gradients, highlights |
-| Break Green | `#00ff88` | Break mode indicator |
-| Background | `#020617` | Main background |
-| Glass | `rgba(15, 23, 42, 0.9)` | Card background |
-
-### Typography
-- **Font Family**: Inter (fallback to system fonts)
-- **Direction**: RTL (Arabic)
-- **Timer Display**: Tabular nums for consistent width
-
-### Effects
-- Glass-morphism with backdrop-filter blur
-- Smooth hover transitions (0.3s)
-- Gradient text on headings
-- Box shadows for depth
-
----
-
-## 📂 Project Structure
+## 📂 هيكل المشروع | מבנה הפרויקט | Project Structure
 
 ```
 Abdullah-Z-Timer/
-├── index.html          # Main HTML structure
-├── style.css           # CSS styling and responsive design
+├── index.html          # الصفحة الرئيسية
+├── style.css           # الأنماط CSS
+├── analytics.html      # صفحة الإحصائيات
+├── about.html          # صفحة من نحن
+├── contact.html        # صفحة تواصل معنا
 └── components/
-    ├── script.js       # DOM event handlers
-    └── timerLogic.js   # Core timer logic and state management
+    ├── script.js       # معالجة أحداث DOM
+    └── timerLogic.js   # منطق المؤقت
 ```
 
 ---
 
-## 🔧 Technical Details
+## 🎨 نظام الألوان | מערכת הצבעים | Color Palette
 
-### Input Validation
-- Hours: 0-24
-- Minutes: 0-59
-- Seconds: 0-59
-
-### Timer Logic
-- Uses `setInterval` with 1000ms (1 second) intervals
-- Calculates hours, minutes, seconds from total seconds
-- Updates UI on each tick and on session switch
-
-### Session Management
-- Boolean flag tracks work/break state
-- Auto-switches to opposite session on timer completion
-- Logs completed session to history before switching
-- Shows appropriate popup message based on session type
-
-### Responsive Breakpoints
-- Desktop: 420px card width
-- Mobile (<480px): 95% width, stacked controls
-- Small mobile (<360px): Reduced font sizes
+| عربية          | עברית       | English     |
+| -------------- | ----------- | ----------- |
+| سيان           | ציאן        | Cyan        |
+| بنفسجي         | סגול        | Purple      |
+| أخضر للاستراحة | ירוק להפסקה | Break Green |
+| الخلفية        | הרקע        | Background  |
+| الزجاج         | זכוכית      | Glass       |
 
 ---
 
-## 🤝 Contributing
+## 👨‍💻 المطور | המפתח | Developer
 
-Contributions are welcome! Feel free to:
-1. Fork the repository
-2. Create a feature branch
-3. Make your changes
-4. Submit a pull request
+**عبد الله زيد** | [GitHub](https://github.com/AbdullahZaid-ggg)
 
 ---
 
-## 📄 License
+## 🙏 الشكر | תודות | Acknowledgments
 
-This project is open source and available under the MIT License.
-
----
-
-## 👨‍💻 Author
-
-**Abdullah Zaid** - [GitHub](https://github.com/AbdullahZaid-ggg)
-
-Built with ❤️ and lots of ☕
-
----
-
-## 🙏 Acknowledgments
-
-- Inspired by the Pomodoro Technique
-- Glass-morphism design inspiration from modern UI trends
-- Font Awesome for icons
+- تقنية بومودورو | טכניקת פומודורו | Pomodoro Technique
+- تصميم الزجاجية | עיצוב זכוכית | Glass-morphism design
+- أيقونات Font Awesome | אייקונים מ-Font Awesome | Font Awesome icons

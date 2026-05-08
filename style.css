@@ -1,8 +1,27 @@
 /* 
    Z-Timer Pro - Final Styling
    Developed for: Abdallah
-*/
 
+   ============================================
+   جدول المحتويات:
+   1. المتغيرات (Variables)
+   2. الأنماط الأساسية (Base Styles)
+   3. قسم التنقل (Navigation)
+   4. حاوية الصفحة (Page Container)
+   5. بطاقة الزجاج (Glass Card)
+   6. المؤقت (Timer)
+   7. لوحة الإعدادات (Settings Panel)
+   8. أزرار التحكم (Controls)
+   9. السجل (History)
+   10. النافذة المنبثقة (Popup)
+   11. الإحصائيات (Analytics)
+   12. صفحة من نحن (About)
+   13. صفحة تواصل معنا (Contact)
+   14. التصميم المتجاوب (Responsive)
+   ============================================
+ */
+
+/* 1. المتغيرات - الألوان الأساسية للمشروع */
 :root {
     --primary: #00f2ff;
     --accent: #7000ff;
@@ -11,6 +30,7 @@
     --glass: rgba(15, 23, 42, 0.9);
 }
 
+/* 2. الأنماط الأساسية */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -26,7 +46,7 @@ body {
     padding-top: 80px;
 }
 
-/* Navigation */
+/* 3. قسم التنقل - Navigation Bar */
 .main-nav {
     position: fixed;
     top: 0;
@@ -100,7 +120,7 @@ body {
     padding: 0;
 }
 
-/* Page Container */
+/* 4. حاوية الصفحة - Page Container */
 .page-wrapper {
     display: flex;
     justify-content: center;
@@ -115,6 +135,7 @@ body {
     width: 100%;
 }
 
+/* 5. بطاقة الزجاج - Glass Card */
 .glass-card {
     background: var(--glass);
     backdrop-filter: blur(20px);
@@ -139,13 +160,22 @@ h1 {
     margin-bottom: 5px;
 }
 
+/* 7. لوحة الإعدادات - Settings Panel */
+.settings-tomato {
+    font-size: 3rem;
+    text-align: center;
+    margin-bottom: 5px;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.6));
+}
+
 .settings-panel {
-    margin: 20px 0;
+    margin: 0;
     padding: 15px;
     background: rgba(255, 255, 255, 0.05);
     border-radius: 20px;
 }
 
+/* إدخال الوقت - Time Input */
 .input-group {
     display: flex;
     gap: 8px;
@@ -172,9 +202,20 @@ h1 {
     font-weight: bold;
 }
 
-/* Timer Display Engine */
+/* 6. المؤقت - Timer Display */
 .timer-display {
     margin: 30px 0;
+}
+
+.timer-tomato {
+    font-size: 3.5rem;
+    filter: drop-shadow(0 0 10px rgba(0, 242, 255, 0.5));
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
 }
 
 #timer {
@@ -197,6 +238,7 @@ h1 {
     margin: 0 2px;
 }
 
+/* 8. أزرار التحكم - Main Controls */
 .main-controls {
     display: flex;
     gap: 12px;
@@ -234,6 +276,7 @@ button:hover {
     filter: brightness(1.2);
 }
 
+/* 9. السجل - Session History */
 #session-list {
     list-style: none;
     max-height: 150px;
@@ -368,6 +411,7 @@ footer .author {
     }
 }
 
+/* 10. النافذة المنبثقة - Popup Modal */
 .popup {
     display: none;
     position: fixed;
@@ -431,7 +475,7 @@ footer .author {
     filter: brightness(1.1);
 }
 
-/* Responsive Navigation */
+/* 12. التصميم المتجاوب - Responsive Design */
 @media (max-width: 768px) {
     .nav-toggle {
         display: block;
@@ -465,7 +509,7 @@ footer .author {
     }
 }
 
-/* Page Content Styles */
+/* 11. صفحة الإحصائيات - Analytics Page */
 .page-content {
     background: var(--glass);
     backdrop-filter: blur(20px);

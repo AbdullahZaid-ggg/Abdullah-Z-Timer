@@ -2,37 +2,53 @@
 <html lang="ar" dir="rtl">
 
 <head>
+    <!-- إعدادات الصفحة الأساسية -->
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Abdullah Z Timer - المؤقت</title>
+    <!-- استدعاء مكتبة أيقونات Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- استدعاء ملف التنسيقات -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
+    <!-- ============================================
+         قسم التنقل (Navigation Bar)
+         ============================================ -->
     <nav class="main-nav">
         <div class="nav-container">
+            <!-- الشعار مع أيقونة الطماطم -->
             <a href="index.html" class="nav-logo">
                 <span class="nav-tomato">🍅</span>
                 <span>Abdullah Z Timer</span>
             </a>
+            <!-- روابط الصفحات -->
             <ul class="nav-links">
                 <li><a href="index.html" class="active"><i class="fas fa-clock"></i> المؤقت</a></li>
                 <li><a href="analytics.html"><i class="fas fa-chart-line"></i> الإحصائيات</a></li>
                 <li><a href="about.html"><i class="fas fa-info-circle"></i> من نحن</a></li>
                 <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
             </ul>
+            <!-- زر القائمة للموبايل -->
             <button class="nav-toggle" id="nav-toggle">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </nav>
 
+    <!-- ============================================
+         المحتوى الرئيسي - بطاقة المؤقت
+         ============================================ -->
     <div class="container">
         <div class="glass-card">
+            
+            <!-- لوحة إعدادات الوقت -->
+            <div class="settings-tomato">🍅</div>
             <div class="settings-panel">
                 <label>وقت التركيز</label>
+                <!-- إدخال الوقت: ثوانٍ | دقائق | ساعات -->
                 <div class="input-group">
                     <input type="number" id="seconds-input" value="0" min="0" max="59" placeholder="ث">
                     <span class="input-sep">:</span>
@@ -43,26 +59,34 @@
                 <small id="break-hint">الاستراحة: 5 دقائق</small>
             </div>
 
+            <!-- عرض المؤقت -->
             <div class="timer-display">
+                <div class="timer-tomato">🍅</div>
                 <div id="status-label">وضع التركيز</div>
+                <!-- الساعات:الدقائق:الثواني -->
                 <div id="timer">
                     <span id="hours">00</span><span class="colon">:</span><span id="minutes">25</span><span class="colon">:</span><span
                         id="seconds">00</span>
                 </div>
             </div>
 
+            <!-- أزرار التحكم -->
             <div class="main-controls">
                 <button id="start" class="btn-start"><i class="fas fa-play"></i> ابدأ</button>
                 <button id="pause" class="btn-pause"><i class="fas fa-pause"></i> إيقاف</button>
                 <button id="reset" class="btn-reset"><i class="fas fa-undo"></i> إعادة</button>
             </div>
 
+            <!-- ذيل الصفحة -->
             <footer>
                 <p>تم صنع هذا الموقع بتطوع وشغف من <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
             </footer>
         </div>
     </div>
 
+    <!-- ============================================
+         النافذة المنبثقة (Popup) - تظهر عند انتهاء الجلسة
+         ============================================ -->
     <div id="popup" class="popup">
         <div class="popup-content">
             <div class="popup-icon"><i class="fas fa-bell"></i></div>
@@ -72,7 +96,10 @@
         </div>
     </div>
 
+    <!-- استدعاء ملف JavaScript للمنطق -->
     <script type="module" src="components/script.js"></script>
+    
+    <!-- سكريبت التحكم في القائمة للموبايل -->
     <script>
         document.getElementById('nav-toggle').addEventListener('click', function() {
             document.querySelector('.nav-links').classList.toggle('show');
