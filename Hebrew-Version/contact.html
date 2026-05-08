@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>צור קשר - Abdullah Z Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-clock"></i> הטיימר</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> סטטיסטיקות</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> אודות</a></li>
+                <li><a href="contact.html" class="active"><i class="fas fa-envelope"></i> צור קשר</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-title">
+                <span class="title-icon">📬</span>
+                <div>
+                    <h1>צור קשר</h1>
+                    <p>אנחנו כאן לשמוע את ההערות וההצעות שלך</p>
+                </div>
+            </div>
+
+            <div class="contact-methods">
+                <div class="contact-card">
+                    <i class="fab fa-github"></i>
+                    <h3>GitHub</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">בקר בקישור</p>
+                    <a href="https://github.com/AbdullahZaid-ggg" target="_blank">AbdullahZaid-ggg</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>דואר אלקטרוני</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">שלח לנו הודעה</p>
+                    <a href="mailto:abdallazeed3@gmail.com">abdallazeed3@gmail.com</a>
+                </div>
+                <div class="contact-card">
+                    <i class="fab fa-linkedin"></i>
+                    <h3>LinkedIn</h3>
+                    <p style="color: rgba(255,255,255,0.6); font-size: 0.9rem;">התחבר דרך</p>
+                    <a href="https://www.linkedin.com/in/abdalla-zaid-81926439b" target="_blank">Abdullah Zaid</a>
+                </div>
+            </div>
+
+            <footer>
+                <p>אתר זה נוצר בהתנדבות ובהתלהבות על ידי <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Abdullah Z Timer - הטיימר</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html" class="active"><i class="fas fa-clock"></i> הטיימר</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> סטטיסטיקות</a></li>
+                <li><a href="about.html"><i class="fas fa-info-circle"></i> אודות</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> צור קשר</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="glass-card">
+            
+            <div class="settings-tomato">🍅</div>
+            <div class="settings-panel">
+                <label>זמן ריכוז</label>
+                <div class="input-group">
+                    <input type="number" id="seconds-input" value="0" min="0" max="59" placeholder="ש">
+                    <span class="input-sep">:</span>
+                    <input type="number" id="minutes-input" value="25" min="0" max="59" placeholder="ד">
+                    <span class="input-sep">:</span>
+                    <input type="number" id="hours-input" value="0" min="0" max="24" placeholder="ש">
+                </div>
+                <small id="break-hint">הפסקה: 5 דקות</small>
+            </div>
+
+            <div class="timer-display">
+                <div class="timer-tomato">🍅</div>
+                <div id="status-label">מצב ריכוז</div>
+                <div id="timer">
+                    <span id="hours">00</span><span class="colon">:</span><span id="minutes">25</span><span class="colon">:</span><span
+                        id="seconds">00</span>
+                </div>
+            </div>
+
+            <div class="main-controls">
+                <button id="start" class="btn-start"><i class="fas fa-play"></i> התחל</button>
+                <button id="pause" class="btn-pause"><i class="fas fa-pause"></i> עצור</button>
+                <button id="reset" class="btn-reset"><i class="fas fa-undo"></i> איפוס</button>
+            </div>
+
+            <footer>
+                <p>אתר זה נוצר בהתנדבות ובהתלהבות על ידי <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <div class="popup-icon"><i class="fas fa-bell"></i></div>
+            <h2 id="popup-title">הסשן הסתיים!</h2>
+            <p id="popup-message">הגיע זמן ההפסקה</p>
+            <button id="popup-btn">אישור</button>
+        </div>
+    </div>
+
+    <script type="module" src="js/main.js"></script>
+    
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

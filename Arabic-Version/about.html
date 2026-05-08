@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>من نحن - Abdullah Z Timer</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-clock"></i> المؤقت</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> الإحصائيات</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> من نحن</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> تواصل معنا</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-title">
+                <span class="title-icon">ℹ️</span>
+                <div>
+                    <h1>من نحن</h1>
+                    <p>حول مشروع Abdullah Z Timer</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-rocket"></i> عن المشروع</h2>
+                <p>Abdullah Z Timer هو تطبيق بومودورو عصري يجمع بين التصميم الجمالي والوظائف العملية. صمم ليدعمك في تحقيق أقصى إنتاجية مع الحفاظ على صحة عقلك وجسمك.</p>
+                <p>يتميز التصميم بواجهة زجاجية حديثة (Glass-morphism) مع ألوان متدرجة تجمع بين السيان والبنفسجي، مما يوفر تجربة مستخدم مريحة ومبهرة.</p>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-lightbulb"></i> تقنية بومودورو</h2>
+                <p>تقنية بومودورو هي طريقة إدارة وقت طورها فرانشيسكو سيكيلو في أواخر الثمانينيات. الفكرة بسيطة:-work.focused bursts of work (typically 25 minutes) followed by short breaks (5 minutes).</p>
+                <p>هذا الأسلوب يساعد على:</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> زيادة التركيز وتقليل التشتت</li>
+                    <li><i class="fas fa-check"></i> تحسين إدارة الوقت</li>
+                    <li><i class="fas fa-check"></i> تقليل الإرهاق العقلي</li>
+                    <li><i class="fas fa-check"></i> تعزيز الإنتاجية</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-code"></i> التقنيات المستخدمة</h2>
+                <p>صنع هذا الموقع باستخدام:</p>
+                <ul class="features-list">
+                    <li><i class="fab fa-html5"></i> HTML5 - لهيكل الصفحة</li>
+                    <li><i class="fab fa-css3"></i> CSS3 - للتصميم والزجاجية</li>
+                    <li><i class="fab fa-js"></i> JavaScript - للمنطق والتفاعل</li>
+                    <li><i class="fab fa-font-awesome"></i> Font Awesome - للأيقونات</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-heart"></i> المطور</h2>
+                <p>تم تطوير هذا المشروع بـ تطوع و شغف بواسطة <strong>عبد الله زيد</strong>.</p>
+                <p>هذا المشروع هو مثال على الشغف بالتعلم وبناء أدوات مفيدة للمجتمع.</p>
+            </div>
+
+            <footer>
+                <p>تم صنع هذا الموقع بتطوع وشغف من <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>

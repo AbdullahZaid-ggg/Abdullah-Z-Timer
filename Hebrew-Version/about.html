@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>אודות - Abdullah Z Timer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700&family=Rubik:wght@400;500;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">
+                <span class="nav-tomato">🍅</span>
+                <span>Abdullah Z Timer</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html"><i class="fas fa-clock"></i> הטיימר</a></li>
+                <li><a href="analytics.html"><i class="fas fa-chart-line"></i> סטטיסטיקות</a></li>
+                <li><a href="about.html" class="active"><i class="fas fa-info-circle"></i> אודות</a></li>
+                <li><a href="contact.html"><i class="fas fa-envelope"></i> צור קשר</a></li>
+            </ul>
+            <button class="nav-toggle" id="nav-toggle">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <div class="page-wrapper">
+        <div class="page-content">
+            <div class="page-title">
+                <span class="title-icon">ℹ️</span>
+                <div>
+                    <h1>אודות</h1>
+                    <p>על פרויקט Abdullah Z Timer</p>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-rocket"></i> על הפרויקט</h2>
+                <p>Abdullah Z Timer הוא אפליקציית פומודורו מודרנית המשלבת עיצוב אסתטי עם פונקציונליות מעשית. תוכנן כדי לעזור לך להשיג מקסימום פרודוקטיביות תוך שמירה על בריאות הגוף והנפש.</p>
+                <p>העיצוב כולל ממשק זכוכית מודרני (Glass-morphism) עם צבעי גרדיאנט המשלבים ציאן וסגול, מה שמספק חווית משתמש נוחה ומרשימה.</p>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-lightbulb"></i> טכניקת פומודורו</h2>
+                <p>טכניקת פומודורו היא שיטת ניהול זמן שפותחה על ידי פרנצ'סקו צ'ירילו בסוף שנות השמונים. הרעיון פשוט: רצפים ממוקדים של עבודה (בדרך כלל 25 דקות) ואחריהם הפסקות קצרות (5 דקות).</p>
+                <p>שיטה זו עוזרת ל:</p>
+                <ul class="features-list">
+                    <li><i class="fas fa-check"></i> להגביר ריכוז ולהפחית הסחות</li>
+                    <li><i class="fas fa-check"></i> לשפר ניהול זמן</li>
+                    <li><i class="fas fa-check"></i> להפחית עייפות מנטלית</li>
+                    <li><i class="fas fa-check"></i> לחזק פרודוקטיביות</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-code"></i> טכנולוגיות בשימוש</h2>
+                <p>האתר נבנה באמצעות:</p>
+                <ul class="features-list">
+                    <li><i class="fab fa-html5"></i> HTML5 - למבנה הדף</li>
+                    <li><i class="fab fa-css3"></i> CSS3 - לעיצוב וזכוכית</li>
+                    <li><i class="fab fa-js"></i> JavaScript - ללוגיקה ואינטראקציה</li>
+                    <li><i class="fab fa-font-awesome"></i> Font Awesome - לאייקונים</li>
+                </ul>
+            </div>
+
+            <div class="about-section">
+                <h2><i class="fas fa-heart"></i> המפתח</h2>
+                <p>פרויקט זה פותח בהתנדבות ובהתלהבות על ידי <strong>עבדאללה זייד</strong>.</p>
+                <p>פרויקט זה הוא דוגמה להתלהבות מלמידה ובניית כלים שימושיים לקהילה.</p>
+            </div>
+
+            <footer>
+                <p>אתר זה נוצר בהתנדבות ובהתלהבות על ידי <a href="https://github.com/AbdullahZaid-ggg" target="_blank" rel="noopener noreferrer"><i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></a></p>
+            </footer>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('nav-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('show');
+        });
+    </script>
+</body>
+
+</html>
