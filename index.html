@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Z-Timer Pro</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="container">
+        <div class="glass-card">
+            <header>
+                <h1> Abdullah Z Timer</h1>
+                <p class="tagline">Work Hard, Rest Smart</p>
+            </header>
+
+            <div class="settings-panel">
+                <label>وقت التركيز</label>
+                <div class="input-group">
+                    <input type="number" id="hours-input" value="0" min="0" max="24" placeholder="س">
+                    <span class="input-sep">:</span>
+                    <input type="number" id="minutes-input" value="25" min="0" max="59" placeholder="د">
+                    <span class="input-sep">:</span>
+                    <input type="number" id="seconds-input" value="0" min="0" max="59" placeholder="ث">
+                </div>
+                <small id="break-hint">الاستراحة: 5 دقائق</small>
+            </div>
+
+            <div class="timer-display">
+                <div id="status-label">وضع التركيز</div>
+                <div id="timer">
+                    <span id="hours">00</span><span class="colon">:</span><span id="minutes">25</span><span class="colon">:</span><span
+                        id="seconds">00</span>
+                </div>
+            </div>
+
+            <div class="main-controls">
+                <button id="start" class="btn-start"><i class="fas fa-play"></i> ابدأ</button>
+                <button id="pause" class="btn-pause"><i class="fas fa-pause"></i> إيقاف</button>
+                <button id="reset" class="btn-reset"><i class="fas fa-undo"></i> إعادة</button>
+            </div>
+
+            <section class="history-section">
+                <div class="history-header">
+                    <h3>السجل</h3>
+                    <button id="clear-history">مسح</button>
+                </div>
+                <ul id="session-list"></ul>
+            </section>
+
+            <footer>
+                <p>تم صنع هذا الموقع بتطوع وشغف من <i class="fab fa-github github-icon"></i><span class="author">AbdullahZaid-ggg</span></p>
+            </footer>
+        </div>
+    </div>
+
+<script type="module" src="components/script.js"></script>
+</body>
+
+</html>

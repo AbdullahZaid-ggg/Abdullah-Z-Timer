@@ -1,0 +1,273 @@
+/* 
+   Z-Timer Pro - Final Styling
+   Developed for: Abdallah
+*/
+
+:root {
+    --primary: #00f2ff;
+    --accent: #7000ff;
+    --break: #00ff88;
+    --bg: #020617;
+    --glass: rgba(15, 23, 42, 0.9);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: var(--bg);
+    color: white;
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    direction: rtl;
+}
+
+.glass-card {
+    background: var(--glass);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 2.5rem;
+    border-radius: 35px;
+    width: 420px;
+    text-align: center;
+    box-shadow: 0 25px 50px rgba(0, 0, 0, 0.5);
+}
+
+h1 {
+    font-size: 2.2rem;
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 5px;
+}
+
+.settings-panel {
+    margin: 20px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 20px;
+}
+
+.input-group {
+    display: flex;
+    gap: 8px;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.input-group input {
+    background: #000;
+    border: 2px solid var(--primary);
+    color: var(--primary);
+    padding: 10px;
+    border-radius: 12px;
+    width: 70px;
+    text-align: center;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+
+.input-sep {
+    color: var(--primary);
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+/* Timer Display Engine */
+.timer-display {
+    margin: 30px 0;
+}
+
+#timer {
+    font-size: 4.8rem;
+    font-weight: 800;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    direction: ltr;
+    /* لضمان ترتيب HH:MM:SS بشكل صحيح */
+    font-variant-numeric: tabular-nums;
+}
+
+#timer span {
+    min-width: 1.1ch;
+}
+
+.colon {
+    color: rgba(255, 255, 255, 0.2);
+    margin: 0 2px;
+}
+
+.main-controls {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+button {
+    flex: 1;
+    padding: 15px;
+    border-radius: 15px;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-start {
+    background: var(--primary);
+    color: #000;
+}
+
+.btn-pause {
+    background: rgba(255, 255, 255, 0.1);
+    color: white;
+}
+
+.btn-reset {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+button:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.2);
+}
+
+#session-list {
+    list-style: none;
+    max-height: 150px;
+    overflow-y: auto;
+    text-align: right;
+}
+
+.session-item {
+    background: rgba(255, 255, 255, 0.03);
+    padding: 12px;
+    margin-top: 10px;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-right: 4px solid var(--primary);
+}
+
+.session-item .delete-btn {
+    color: rgba(255, 255, 255, 0.3);
+    cursor: pointer;
+    margin-right: 10px;
+    transition: 0.3s;
+}
+
+.session-item .delete-btn:hover {
+    color: #ff4757;
+}
+#clear-history {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 15px 20px;
+    border-radius: 12px;
+    margin-top: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+small{
+    display: block;
+    margin: 5px;
+    color: rgba(255, 255, 255, 0.5);
+    font-size: 0.9rem;}
+
+footer {
+    margin-top: 20px;
+    padding: 10px;
+    text-align: center;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+footer p {
+    color: rgba(255, 255, 255, 0.4);
+    font-size: 0.9rem;
+}
+
+footer .author {
+    background: linear-gradient(to right, var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-weight: bold;
+}
+
+.github-icon {
+    vertical-align: middle;
+    margin: 0 6px;
+    font-size: 1.1rem;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+    .glass-card {
+        width: 95%;
+        padding: 1.5rem;
+        border-radius: 25px;
+    }
+
+    h1 {
+        font-size: 1.6rem;
+    }
+
+    #timer {
+        font-size: 3rem;
+    }
+
+    .input-group input {
+        width: 55px;
+        font-size: 1rem;
+        padding: 8px;
+    }
+
+    .input-sep {
+        font-size: 1.2rem;
+    }
+
+    .main-controls {
+        flex-direction: column;
+        gap: 8px;
+    }
+
+    .main-controls button {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+
+    .settings-panel {
+        padding: 12px;
+    }
+
+    footer {
+        position: relative;
+        bottom: auto;
+        padding: 10px;
+    }
+
+    footer p {
+        font-size: 0.75rem;
+    }
+}
+
+@media (max-width: 360px) {
+    #timer {
+        font-size: 2.2rem;
+    }
+
+    .input-group input {
+        width: 45px;
+    }
+}
